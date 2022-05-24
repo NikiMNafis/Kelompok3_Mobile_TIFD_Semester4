@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:project_akhir_mobile_smtr4/screen/home/main_screen.dart';
 import 'package:project_akhir_mobile_smtr4/screen/sign_in_screen.dart';
+import 'package:project_akhir_mobile_smtr4/screen/sign_up_screen.dart';
 import 'package:project_akhir_mobile_smtr4/screen/splash_screen.dart';
 
 
@@ -14,6 +16,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => SplashScreen(),
         '/sign-in': (context) => SignInScreen(),
+        '/sign-up': (context) => SignUpScreen(),
+        '/home': (context) => MainScreen(),
       },
     );
   }

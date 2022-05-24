@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_akhir_mobile_smtr4/theme.dart';
 
 class SignInScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     Widget header(){
@@ -142,7 +143,9 @@ class SignInScreen extends StatelessWidget {
         width: double.infinity,
         margin: EdgeInsets.only(top: 30),
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, '/home');
+          },
           style: TextButton.styleFrom(
             backgroundColor: primaryColor,
             shape: RoundedRectangleBorder(
@@ -172,11 +175,16 @@ class SignInScreen extends StatelessWidget {
                 fontSize: 12,
               ),
             ),
-            Text(
-              'Sign Up',
-              style: greenTextStyle.copyWith(
-                fontSize: 12,
-                fontWeight: medium,
+            GestureDetector(
+              onTap: (){
+                Navigator.pushNamed(context, '/sign-up');
+              },
+              child: Text(
+                'Sign Up',
+                style: greenTextStyle.copyWith(
+                  fontSize: 12,
+                  fontWeight: medium,
+                ),
               ),
             )
           ],
