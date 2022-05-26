@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_akhir_mobile_smtr4/theme.dart';
 
 class HomeScreen extends StatelessWidget {
 
@@ -6,7 +7,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: Text(
-          'Home Screen'
+          'Home Screen',
+          style: primaryTextStyle,
         ),
     );
   }
