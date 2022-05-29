@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_akhir_mobile_smtr4/theme.dart';
+import 'package:project_akhir_mobile_smtr4/widgets/chat_tile.dart';
 
 class ChatScreen extends StatelessWidget {
   @override
@@ -20,7 +21,7 @@ class ChatScreen extends StatelessWidget {
       );
     }
 
-    Widget content() {
+    Widget emptyChat() {
       return Expanded(
         child: Container(
           width: double.infinity,
@@ -75,6 +76,23 @@ class ChatScreen extends StatelessWidget {
                   ),
                 ),
               ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    Widget content() {
+      return Expanded(
+        child: Container(
+          width: double.infinity,
+          color: backgroundColor3,
+          child: ListView(
+            padding: EdgeInsets.symmetric(
+              horizontal: defaultMargin,
+            ),
+            children: [
+              ChatTile(),
             ],
           ),
         ),
