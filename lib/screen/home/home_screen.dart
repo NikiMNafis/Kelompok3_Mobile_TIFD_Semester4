@@ -49,9 +49,130 @@ class HomeScreen extends StatelessWidget {
       );
     }
 
+    Widget categories() {
+      return Container(
+        margin: EdgeInsets.only(
+          top: defaultMargin,
+        ),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              SizedBox(
+                width: defaultMargin,
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 10,
+                ),
+                margin: EdgeInsets.only(right: 16),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: primaryColor,
+                ),
+                child: Text(
+                  'All Computer',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 13,
+                    fontWeight: medium,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 10,
+                ),
+                margin: EdgeInsets.only(right: 16),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: subtitleColor,
+                  ),
+                  color: transparentColor,
+                ),
+                child: Text(
+                  'Laptop',
+                  style: subtitleTextStyle.copyWith(
+                    fontSize: 13,
+                    fontWeight: medium,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 10,
+                ),
+                margin: EdgeInsets.only(right: 16),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: subtitleColor,
+                  ),
+                  color: transparentColor,
+                ),
+                child: Text(
+                  'GPU',
+                  style: subtitleTextStyle.copyWith(
+                    fontSize: 13,
+                    fontWeight: medium,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 10,
+                ),
+                margin: EdgeInsets.only(right: 16),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: subtitleColor,
+                  ),
+                  color: transparentColor,
+                ),
+                child: Text(
+                  'CPU',
+                  style: subtitleTextStyle.copyWith(
+                    fontSize: 13,
+                    fontWeight: medium,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 10,
+                ),
+                margin: EdgeInsets.only(right: 16),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: subtitleColor,
+                  ),
+                  color: transparentColor,
+                ),
+                child: Text(
+                  'Fan cooler',
+                  style: subtitleTextStyle.copyWith(
+                    fontSize: 13,
+                    fontWeight: medium,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
     return ListView(
       children: [
         header(),
+        categories(),
       ],
     );
   }
