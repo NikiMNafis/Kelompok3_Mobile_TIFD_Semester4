@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_akhir_mobile_smtr4/theme.dart';
 import 'package:project_akhir_mobile_smtr4/widgets/product_card.dart';
+import 'package:project_akhir_mobile_smtr4/widgets/product_tile.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -210,12 +211,47 @@ class HomeScreen extends StatelessWidget {
       );
     }
 
+    Widget newArrivalsTitle() {
+      return Container(
+        margin: EdgeInsets.only(
+          top: defaultMargin,
+          left: defaultMargin,
+          right: defaultMargin,
+        ),
+        child: Text(
+          'New Arrivals',
+          style: primaryTextStyle.copyWith(
+            fontSize: 22,
+            fontWeight: semiBold,
+          ),
+        ),
+      );
+    }
+
+    Widget newArrivals() {
+      return Container(
+        margin: EdgeInsets.only(
+          top: 14,
+        ),
+        child: Column(
+          children: [
+            ProductTile(),
+            ProductTile(),
+            ProductTile(),
+            ProductTile(),
+          ],
+        ),
+      );
+    }
+
     return ListView(
       children: [
         header(),
         categories(),
         popularProductsTitle(),
         popularProducts(),
+        newArrivalsTitle(),
+        newArrivals(),
       ],
     );
   }
