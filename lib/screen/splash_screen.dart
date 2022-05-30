@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
 
-    Timer(Duration(seconds: 3), () => Navigator.pushNamed(context, '/sign-in'),
+    Timer(Duration(seconds: 2), () => Navigator.pushNamed(context, '/sign-in'),
     );
 
     super.initState();
