@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project_akhir_mobile_smtr4/screen/checkout_screen.dart';
+import 'package:project_akhir_mobile_smtr4/screen/checkout_success_screen.dart';
 import 'package:project_akhir_mobile_smtr4/screen/detail_chat_screen.dart';
 import 'package:project_akhir_mobile_smtr4/screen/edit_profile_screen.dart';
 import 'package:project_akhir_mobile_smtr4/screen/chart_screen.dart';
@@ -26,6 +28,8 @@ class MyApp extends StatelessWidget {
         '/edit-profile': (context) => EditProfileScreen(),
         '/product': (context) => ProductScreen(),
         '/cart': (context) => CartScreen(),
+        '/checkout': (context) => CheckoutScreen(),
+        '/checkout-success': (context) => CheckoutSuccessScreen(),
       },
     );
   }
