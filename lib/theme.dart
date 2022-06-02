@@ -37,6 +37,9 @@ TextStyle greenTextStyle = GoogleFonts.poppins(
 TextStyle blackTextStyle = GoogleFonts.poppins(
   color: blackColor,
 );
+TextStyle AlertTextStyle = GoogleFonts.poppins(
+  color: alertColor,
+);
 
 FontWeight light = FontWeight.w300;
 FontWeight regular = FontWeight.w400;
