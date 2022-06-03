@@ -1,11 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:project_akhir_mobile_smtr4/providers/auth_provider.dart';
 import 'package:project_akhir_mobile_smtr4/theme.dart';
+import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatelessWidget {
-
+  TextEditingController nameController = TextEditingController(text: '');
+  TextEditingController usernameController = TextEditingController(text: '');
+  TextEditingController emailController = TextEditingController(text: '');
+  TextEditingController passwordController = TextEditingController(text: '');
+  TextEditingController confirmpasswordController =
+      TextEditingController(text: '');
   @override
   Widget build(BuildContext context) {
-    Widget header(){
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+
+    handleSignUp() async {
+      if (await authProvider.register(
+        name: nameController.text,
+        username: usernameController.text,
+        email: emailController.text,
+        pasword: passwordController.text,
+        confirmpassword: confirmpasswordController.text,
+      )) {
+        Navigator.pushNamed(context, '/home');
+      }
+    }
+
+    Widget header() {
       return Container(
         margin: EdgeInsets.only(top: 30),
         child: Column(
@@ -67,6 +88,7 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     Expanded(
                       child: TextFormField(
+                        controller: nameController,
                         style: primaryTextStyle,
                         decoration: InputDecoration.collapsed(
                           hintText: 'Your Full Name',
@@ -121,6 +143,7 @@ class SignUpScreen extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         style: primaryTextStyle,
+                        controller: usernameController,
                         decoration: InputDecoration.collapsed(
                           hintText: 'Your Username',
                           hintStyle: subtitleTextStyle,
@@ -174,6 +197,7 @@ class SignUpScreen extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         style: primaryTextStyle,
+                        controller: emailController,
                         decoration: InputDecoration.collapsed(
                           hintText: 'Your Email Address',
                           hintStyle: subtitleTextStyle,
@@ -228,6 +252,7 @@ class SignUpScreen extends StatelessWidget {
                       child: TextFormField(
                         obscureText: true,
                         style: primaryTextStyle,
+                        controller: passwordController,
                         decoration: InputDecoration.collapsed(
                           hintText: 'Your Password',
                           hintStyle: subtitleTextStyle,
@@ -282,6 +307,7 @@ class SignUpScreen extends StatelessWidget {
                       child: TextFormField(
                         obscureText: true,
                         style: primaryTextStyle,
+                        controller: confirmpasswordController,
                         decoration: InputDecoration.collapsed(
                           hintText: 'Confirm Your Password',
                           hintStyle: subtitleTextStyle,
@@ -303,9 +329,7 @@ class SignUpScreen extends StatelessWidget {
         width: double.infinity,
         margin: EdgeInsets.only(top: 15),
         child: TextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/home');
-          },
+          onPressed: handleSignUp,
           style: TextButton.styleFrom(
             backgroundColor: primaryColor,
             shape: RoundedRectangleBorder(
