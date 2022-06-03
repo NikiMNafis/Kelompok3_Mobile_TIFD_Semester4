@@ -1,29 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:project_akhir_mobile_smtr4/providers/auth_provider.dart';
 import 'package:project_akhir_mobile_smtr4/theme.dart';
+import 'package:project_akhir_mobile_smtr4/widgets/loading_button.dart';
 import 'package:provider/provider.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController nameController = TextEditingController(text: '');
+
   TextEditingController usernameController = TextEditingController(text: '');
+
   TextEditingController emailController = TextEditingController(text: '');
+
   TextEditingController passwordController = TextEditingController(text: '');
-  TextEditingController confirmpasswordController =
-      TextEditingController(text: '');
+
+  bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
 
     handleSignUp() async {
+      setState(() {
+        isLoading = true;
+      });
+
       if (await authProvider.register(
         name: nameController.text,
         username: usernameController.text,
         email: emailController.text,
         pasword: passwordController.text,
-        confirmpassword: confirmpasswordController.text,
       )) {
         Navigator.pushNamed(context, '/home');
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: alertColor,
+            content: Text(
+              'Gagal Register!',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
       }
+
+      setState(() {
+        isLoading = false;
+      });
     }
 
     Widget header() {
@@ -307,7 +334,6 @@ class SignUpScreen extends StatelessWidget {
                       child: TextFormField(
                         obscureText: true,
                         style: primaryTextStyle,
-                        controller: confirmpasswordController,
                         decoration: InputDecoration.collapsed(
                           hintText: 'Confirm Your Password',
                           hintStyle: subtitleTextStyle,

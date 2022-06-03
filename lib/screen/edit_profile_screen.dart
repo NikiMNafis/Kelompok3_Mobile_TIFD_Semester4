@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:project_akhir_mobile_smtr4/models/user_model.dart';
+import 'package:project_akhir_mobile_smtr4/providers/auth_provider.dart';
 import 'package:project_akhir_mobile_smtr4/theme.dart';
+import 'package:provider/provider.dart';
 
 class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    UserModel user = authProvider.user;
     PreferredSizeWidget header() {
       return AppBar(
         leading: IconButton(
@@ -28,7 +33,7 @@ class EditProfileScreen extends StatelessWidget {
       );
     }
 
-    Widget nameInput(){
+    Widget nameInput() {
       return Container(
         margin: EdgeInsets.only(
           top: 30,
@@ -45,7 +50,7 @@ class EditProfileScreen extends StatelessWidget {
             TextFormField(
               style: primaryTextStyle,
               decoration: InputDecoration(
-                hintText: 'Jokowi',
+                hintText: '@${user.name}',
                 hintStyle: primaryTextStyle,
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
@@ -54,11 +59,12 @@ class EditProfileScreen extends StatelessWidget {
                 ),
               ),
             ),
-          ],),
+          ],
+        ),
       );
     }
 
-    Widget usernameInput(){
+    Widget usernameInput() {
       return Container(
         margin: EdgeInsets.only(
           top: 30,
@@ -75,7 +81,7 @@ class EditProfileScreen extends StatelessWidget {
             TextFormField(
               style: primaryTextStyle,
               decoration: InputDecoration(
-                hintText: '@Jokowi',
+                hintText: '@${user.username}',
                 hintStyle: primaryTextStyle,
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
@@ -89,7 +95,7 @@ class EditProfileScreen extends StatelessWidget {
       );
     }
 
-    Widget emailInput(){
+    Widget emailInput() {
       return Container(
         margin: EdgeInsets.only(
           top: 30,
@@ -106,7 +112,7 @@ class EditProfileScreen extends StatelessWidget {
             TextFormField(
               style: primaryTextStyle,
               decoration: InputDecoration(
-                hintText: 'Jokowi@gmail.com',
+                hintText: user.email,
                 hintStyle: primaryTextStyle,
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
@@ -115,11 +121,12 @@ class EditProfileScreen extends StatelessWidget {
                 ),
               ),
             ),
-          ],),
+          ],
+        ),
       );
     }
 
-    Widget content(){
+    Widget content() {
       return Container(
         width: double.infinity,
         padding: EdgeInsets.symmetric(
@@ -137,12 +144,11 @@ class EditProfileScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                    image: AssetImage(
-                      'assets/image_profile.png',
-                    ),
-                  ),
+                  fit: BoxFit.fill,
+                  image: NetworkImage(user.profilePhotoUrl),
                 ),
               ),
+            ),
             nameInput(),
             usernameInput(),
             emailInput(),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_akhir_mobile_smtr4/models/user_models.dart';
+import 'package:project_akhir_mobile_smtr4/models/user_model.dart';
 import 'package:project_akhir_mobile_smtr4/services/auth_service.dart';
 
 class AuthProvider with ChangeNotifier {
@@ -17,7 +17,6 @@ class AuthProvider with ChangeNotifier {
     required String username,
     required String email,
     required String pasword,
-    required String confirmpassword,
   }) async {
     try {
       UserModel user = await AuthService().register(
@@ -25,7 +24,23 @@ class AuthProvider with ChangeNotifier {
         username: username,
         email: email,
         password: pasword,
-        confirmpassword: confirmpassword,
+      );
+
+      _user = user;
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<bool> login({
+    required String email,
+    required String pasword,
+  }) async {
+    try {
+      UserModel user = await AuthService().login(
+        email: email,
+        password: pasword,
       );
 
       _user = user;

@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:project_akhir_mobile_smtr4/models/user_model.dart';
+import 'package:project_akhir_mobile_smtr4/providers/auth_provider.dart';
+import 'package:project_akhir_mobile_smtr4/providers/product_provider.dart';
 import 'package:project_akhir_mobile_smtr4/theme.dart';
 import 'package:project_akhir_mobile_smtr4/widgets/product_card.dart';
 import 'package:project_akhir_mobile_smtr4/widgets/product_tile.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    ProductProvider productProvider = Provider.of<ProductProvider>(context);
+    UserModel user = authProvider.user;
     Widget header() {
       return Container(
         margin: EdgeInsets.only(
@@ -20,14 +27,14 @@ class HomeScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Halo, Jokowi',
+                    'Halo, ${user.name}',
                     style: primaryTextStyle.copyWith(
                       fontSize: 24,
                       fontWeight: semiBold,
                     ),
                   ),
                   Text(
-                    '@alexkeinn',
+                    '@${user.username}',
                     style: subtitleTextStyle.copyWith(
                       fontSize: 16,
                     ),
@@ -41,8 +48,8 @@ class HomeScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                    image: AssetImage(
-                      'assets/image_profile.png',
+                    image: NetworkImage(
+                      user.profilePhotoUrl,
                     ),
                   ),
                 )),
