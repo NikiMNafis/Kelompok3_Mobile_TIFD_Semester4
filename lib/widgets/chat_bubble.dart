@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_akhir_mobile_smtr4/models/product_model.dart';
 import 'package:project_akhir_mobile_smtr4/theme.dart';
 
 class ChatBubble extends StatelessWidget {
@@ -10,7 +11,7 @@ class ChatBubble extends StatelessWidget {
   ChatBubble({
     this.isSender = false,
     this.text = '',
-    this.hasProduct = false,
+    this.hasProduct = false, required ProductModel product,
   });
 
   @override

@@ -7,15 +7,15 @@ import 'package:project_akhir_mobile_smtr4/services/message_service.dart';
 import 'package:project_akhir_mobile_smtr4/theme.dart';
 import 'package:project_akhir_mobile_smtr4/widgets/chat_bubble.dart';
 
-class DetailChatPage extends StatefulWidget {
-  ProductModel product;
-  DetailChatPage(this.product);
+class DetailChatScreen extends StatefulWidget {
+  late ProductModel product;
+  DetailChatScreen(this.product);
 
   @override
-  State<DetailChatPage> createState() => _DetailChatPageState();
+  State<DetailChatScreen> createState() => _DetailChatScreenState();
 }
 
-class _DetailChatPageState extends State<DetailChatPage> {
+class _DetailChatScreenState extends State<DetailChatScreen> {
   TextEditingController messageController = TextEditingController(text: '');
 
   @override
