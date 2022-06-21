@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           '/sign-in': (context) => SignInScreen(),
           '/sign-up': (context) => SignUpScreen(),
           '/home': (context) => MainScreen(),
-          '/detail-chat': (context) => DetailChatScreen(),
+          // '/detail-chat': (context) => DetailChatScreen(),
           '/edit-profile': (context) => EditProfileScreen(),
           '/product': (context) => ProductScreen(),
           '/cart': (context) => CartScreen(),

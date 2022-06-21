@@ -8,8 +8,8 @@ import 'package:project_akhir_mobile_smtr4/providers/wishlist_providers.dart';
 import 'package:provider/provider.dart';
 
 class ProductScreen extends StatefulWidget {
-  final ProductModel product;
-  ProductScreen(this.product);
+  // final ProductModel product;
+  // ProductScreen(this.product);
   @override
   _ProductScreenState createState() => _ProductScreenState();
 }
@@ -152,13 +152,16 @@ class _ProductScreenState extends State<ProductScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.product.name!,
+                          // widget.product.name!,
+                          'ROG ZHYPYRUS AW EDITION',
                           style: primaryTextStyle.copyWith(
                             fontSize: 18,
                             fontWeight: semiBold,
                           ),
                         ),
-                        Text(widget.product.category!.name,
+                        Text(
+                            // widget.product.category!.name,
+                            'Laptop',
                             style: secondaryTextStyle.copyWith(
                               fontSize: 12,
                             )),
@@ -167,8 +170,12 @@ class _ProductScreenState extends State<ProductScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      WishlistProvider.setProduct(widget.product);
-                      if (WishlistProvider.isWishlist(widget.product)) {
+                      setState(() {
+                        isWishlist = !isWishlist;
+                      });
+                      // WishlistProvider.setProduct(widget.product);
+                      // if (WishlistProvider.isWishlist(widget.product)) {
+                      if (isWishlist) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             backgroundColor: secondaryColor,
@@ -191,7 +198,8 @@ class _ProductScreenState extends State<ProductScreen> {
                       }
                     },
                     child: Image.asset(
-                      WishlistProvider.isWishlist(widget.product)
+                      // WishlistProvider.isWishlist(widget.product)
+                      isWishlist
                           ? 'assets/button_wishlist_blue.png'
                           : 'assets/button_wishlist.png',
                       width: 46,
